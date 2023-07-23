@@ -1,6 +1,7 @@
-{% extends 'blog/base.html' %} {% block content %}
+{% extends 'blog/base.html' %} 
+{% block content %}
 <body>
-  <h1>Blog Home!</h1>
+  <h1>Posts by {{ view.kwargs.username }}({{page_obj.paginator.count}}) </h1>
   {% for post in posts %}
   <article class="media content-section">
     <img
@@ -9,8 +10,8 @@
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href=" {% url 'user-posts' post.author.username %}"
-        >{{ post.author }}</a
-      >
+          >{{ post.author }}</a
+        >
         <small class="text-muted">{{ post.date_posted|date:"D d M Y"}}</small>
       </div>
       <h2>
